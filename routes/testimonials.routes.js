@@ -36,7 +36,8 @@ router.route('/testimonials/:id').put((req, res) => {
     } else {
       return item;
     };
-  })
+  });
+  
   res.json({ message: "ok" });
 });
 
@@ -45,4 +46,4 @@ router.route('/testimonials/:id').delete((req, res) => {
   res.json({ message: "ok" });
 });
 
-module.exports = router;
+module.exports = router; 

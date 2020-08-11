@@ -15,7 +15,6 @@ app.use('/api', testimonials);
 app.use('/api', concerts);
 app.use('/api', seats);
 
-// Serve static files from the React app
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.get('*', (req, res) => {
@@ -28,4 +27,4 @@ app.use((req, res) => {
 
 app.listen(process.env.PORT || 8000, () => {
   console.log('Server is running on port: 8000');
-});
+}); 

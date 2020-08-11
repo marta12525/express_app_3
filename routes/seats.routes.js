@@ -31,7 +31,7 @@ router.route('/seats').post((req, res) => {
 
 router.route('/seats/:id').put((req, res) => {
   db.seats = db.seats.map(item => {
-    if (item.id == req.params.id) {
+    if (item.id == req.params.id) { 
       return {
         id: req.params.id,
         day: req.body.day,
@@ -43,6 +43,7 @@ router.route('/seats/:id').put((req, res) => {
       return item;
     };
   });
+
   res.json({ message: "ok" });
 });
 
@@ -51,4 +52,4 @@ router.route('/seats/:id').delete((req, res) => {
   res.json({ message: "ok" });
 });
 
-module.exports = router;
+module.exports = router; 
