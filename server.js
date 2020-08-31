@@ -17,7 +17,10 @@ app.use('/api', testimonials);
 app.use('/api', concerts);
 app.use('/api', seats);
 
-mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true });
+//mongoose.connect('mongodb+srv://martab2525:<polki890>@cluster0.waktd.mongodb.net/<NewWaveDB>?retryWrites=true&w=majority', { useNewUrlParser: true });
+
+const dbURI = process.env.NODE_ENV === 'production' ? `mongodb+srv://${process.env.GIT_USERNAME}:${process.env.TESTPS}@cluster0.waktd.mongodb.net/${process.env.TEST_NAME}?retryWrites=true&w=majority` : 'mongodb://localhost:27017/NewWaveDB';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
