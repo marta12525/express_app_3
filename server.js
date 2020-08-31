@@ -19,9 +19,17 @@ app.use('/api', seats);
 
 //mongoose.connect('mongodb+srv://martab2525:<polki890>@cluster0.waktd.mongodb.net/<NewWaveDB>?retryWrites=true&w=majority', { useNewUrlParser: true });
 
-const dbURI = process.env.NODE_ENV === 'production' ? `mongodb+srv://martab2525:<polki890>@cluster0.waktd.mongodb.net/${process.env.TEST_NAME}?retryWrites=true&w=majority` : 'mongodb://localhost:27017/NewWaveDB';
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+//const dbURI = process.env.NODE_ENV === 'production' ? `mongodb+srv://martab2525:<polki890>@cluster0.waktd.mongodb.net/${process.env.TEST_NAME}?retryWrites=true&w=majority` : 'mongodb://localhost:27017/NewWaveDB';
+//mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+//const db = mongoose.connection;
+
+const uri = `mongodb+srv://martab2525:polki890@cluster0.waktd.mongodb.net/NewWaveDB`;
+
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
+
+
+
 
 db.once('open', () => {
   console.log('Connected to the database');
