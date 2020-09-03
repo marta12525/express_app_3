@@ -6,12 +6,14 @@ const seats = require('./routes/seats.routes');
 const path = require('path');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(helmet());
 
 app.use('/api', testimonials);
 app.use('/api', concerts);
@@ -23,7 +25,7 @@ app.use('/api', seats);
 //mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 //const db = mongoose.connection;
 
-const uri = `mongodb+srv://martab2525:polki890@cluster0.waktd.mongodb.net/NewWaveDB`;
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.waktd.mongodb.net/NewWaveDB`;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -60,3 +62,4 @@ const io = socket(server);
 io.on('connection', () => {
   console.log('New socket!');
 });
+

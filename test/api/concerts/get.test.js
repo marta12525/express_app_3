@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../../../server.js');
-const Concert = require('../../../models/concerts.model.js');
+const Concert = require('../../../models/concert.model');
 const MongoMemoryServer = require('mongodb-memory-server').MongoMemoryServer;
 const mongoose = require('mongoose');
 
